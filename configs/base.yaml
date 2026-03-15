@@ -1,0 +1,35 @@
+project_name: Similarity-Relation
+random_seed: 42
+input_path: data/processed/sample_papers.jsonl
+output_dir: outputs
+
+views:
+  structural:
+    enabled: true
+    bibliographic_coupling_weight: 0.6
+    cocitation_weight: 0.4
+  semantic:
+    enabled: true
+    backend: tfidf
+    model_name: allenai/specter2
+    max_features: 5000
+  temporal:
+    enabled: true
+    gamma: 0.2
+
+fusion:
+  structural_weight: 0.45
+  semantic_weight: 0.40
+  temporal_weight: 0.15
+
+paper_experiment:
+  top_k: 5
+  seed_paper_ids:
+    - P1
+    - P4
+
+author_experiment:
+  top_k: 5
+  publication_weighting:
+    recency_gamma: 0.15
+    contribution_mode: inverse_num_authors

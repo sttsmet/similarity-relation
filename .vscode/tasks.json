@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "prepare-sample-data",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe scripts/prepare_aminer_dump.py --input data/external/sample/sample_papers.jsonl --output data/processed/sample_papers.jsonl",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "paper-similarity",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe scripts/run_paper_similarity.py --config configs/paper_similarity.yaml",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "author-similarity",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe scripts/run_author_similarity.py --config configs/author_similarity.yaml",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ]
+}
